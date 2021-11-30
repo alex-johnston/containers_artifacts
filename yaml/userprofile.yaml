@@ -14,7 +14,7 @@ spec:
     - name: SQL_USER
       value: "sqlserverzwh7849"
     - name: SQL_PASSWORD
-      value: "sqladminzWh7849"
+      value: "cY0vi8Ws6"
     - name: SQL_SERVER
       value: "sqlserverzwh7849.database.windows.net"
 
