@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tripviewer-pod
+  labels:
+    app: trips
+spec:
+  #replicas: 3
+  containers:
+  - name: tripviewer
+    image: registryzwh7849.azurecr.io/tripviewer:1.0

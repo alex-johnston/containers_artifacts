@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: trips-pod
+  labels:
+    app: trips
+spec:
+  #replicas: 3
+  containers:
+  - name: trips
+    image: registryzwh7849.azurecr.io/trips:1.0

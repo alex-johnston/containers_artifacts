@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: userjava-pod
+  labels:
+    app: userjava
+spec:
+  #replicas: 3
+  containers:
+  - name: userjava
+    image: registryzwh7849.azurecr.io/userjava:1.0
