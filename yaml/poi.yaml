@@ -10,3 +10,10 @@ spec:
   containers:
   - name: poi
     image: registryzwh7849.azurecr.io/poi:1.0
+    env:
+      - name: ENV_SQL_USER
+        value: "sqlserverzwh7849"
+      - name: SQL_PASSWORD
+        value:  "sqladminzWh7849"
+      - name: SQL_SERVER
+        value: "cY0vi8Ws6"
