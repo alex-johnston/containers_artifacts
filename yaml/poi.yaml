@@ -12,8 +12,20 @@ spec:
     image: registryzwh7849.azurecr.io/poi:1.0
     env:
       - name: SQL_USER
-        value: "sqladminzWh7849"
+        valueFrom:
+          secretKeyRef:
+            name: db-secret
+            key: username
+        #value: "sqladminzWh7849"
       - name: SQL_PASSWORD
-        value:  "cY0vi8Ws6"
+        valueFrom:
+          secretKeyRef:
+            name: db-secret
+            key: password
+        #value:  "cY0vi8Ws6"
       - name: SQL_SERVER
-        value: "sqlserverzwh7849.database.windows.net"
+        valueFrom:
+          secretKeyRef:
+            name: db-secret
+            key: host
+        #value: "sqlserverzwh7849.database.windows.net"
