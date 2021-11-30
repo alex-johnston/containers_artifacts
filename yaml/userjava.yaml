@@ -10,3 +10,10 @@ spec:
   containers:
   - name: userjava
     image: registryzwh7849.azurecr.io/userjava:1.0
+    env:
+      - name: SQL_USER
+        value: "sqladminzWh7849"
+      - name: SQL_PASSWORD
+        value:  "cY0vi8Ws6"
+      - name: SQL_SERVER
+        value: "sqlserverzwh7849.database.windows.net"

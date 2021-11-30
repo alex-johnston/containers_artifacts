@@ -10,3 +10,11 @@ spec:
   containers:
   - name: userprofile
     image: registryzwh7849.azurecr.io/userprofile:1.0
+      env:
+    - name: SQL_USER
+      value: "sqlserverzwh7849"
+    - name: SQL_PASSWORD
+      value: "cY0vi8Ws6"
+    - name: SQL_SERVER
+      value: "sqlserverzwh7849.database.windows.net"
+
