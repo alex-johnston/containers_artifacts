@@ -1,19 +1,51 @@
 ---
 apiVersion: v1
-kind: Pod
+kind: Service
 metadata:
-  name: userjava-pod
-  labels:
-    app: userjava
+  name: userjava
 spec:
-  #replicas: 3
-  containers:
+  selector:
+    name: userjava
+  #clusterIP: None
+  ports:
   - name: userjava
-    image: registryzwh7849.azurecr.io/userjava:1.0
-    env:
-      - name: SQL_USER
-        value: "sqladminzWh7849"
-      - name: SQL_PASSWORD
-        value:  "cY0vi8Ws6"
-      - name: SQL_SERVER
-        value: "sqlserverzwh7849.database.windows.net"
+    port: 80
+    targetPort: 80
+    protocol: TCP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userjava-deployment
+  labels:
+    app: tripinsights
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tripinsights
+  template:
+    metadata:
+      labels:
+        app: tripinsights
+    spec:
+      containers:
+      - name: userjava
+        image: registryzwh7849.azurecr.io/userjava:1.0
+        env:
+          - name: SQL_USER
+            value: "sqladminzWh7849"
+          - name: SQL_PASSWORD
+            value:  "cY0vi8Ws6"
+          - name: SQL_SERVER
+            value: "sqlserverzwh7849.database.windows.net"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 80
+          name: userprofile
