@@ -29,3 +29,13 @@ az aks get-credentials --resource-group teamResources --name t4AKSCluster
 kubectl get nodes
 
 az aks update -n t4AKSCluster -g teamResources --attach-acr  registryzwh7849
+
+kubectl apply -f ./dbsecret.yaml
+
+
+
+
+#az keyvault create --location australiaeast --name "t4-msopenhack-keyvault" --resource-group "teamResources"
+#az keyvault secret set --vault-name "t4-msopenhack-keyvault" --name "ExamplePassword" --value "hVFkk965BuUv"
+#az keyvault secret set --vault-name "t4-msopenhack-keyvault" --name "ExamplePassword" --value "hVFkk965BuUv"
+#az keyvault secret set --vault-name "t4-msopenhack-keyvault" --name "ExamplePassword" --value "hVFkk965BuUv"
