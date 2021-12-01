@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: tripviewer-deployment
   labels:
-    app: tripinsights
+    app: tripsviewer
 spec:
   replicas: 1
   selector:
