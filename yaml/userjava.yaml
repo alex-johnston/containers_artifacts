@@ -17,6 +17,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: userjava-deployment
+  namespace: api
   labels:
     app: userjava
 spec:
