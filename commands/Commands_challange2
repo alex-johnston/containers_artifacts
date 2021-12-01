@@ -1,0 +1,8 @@
+
+az group create --name ajesourceGroup --location eastus
+az aks create --resource-group ajResourceGroup --name ajAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
+az aks get-credentials --resource-group ajResourceGroup --name ajAKSCluster
+kubectl get nodes
+az acr list
+az aks update -n ajAKSCluster -g ajResourceGroup --attach-acr  registryzwh7849
+
