@@ -38,9 +38,10 @@ az ad group create --display-name web-dev --mail-nickname web-dev
 
 
 
+kubectl apply -f yaml/rbac.yaml 
 
-
-
+az ad group show --group api-dev --query objectId -o tsv
+az ad group show --group web-dev --query objectId -o tsv
 
 
 
