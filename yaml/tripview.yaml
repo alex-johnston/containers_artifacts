@@ -12,8 +12,8 @@ spec:
     image: registryzwh7849.azurecr.io/tripviewer:1.0
     env:
       - name: TRIPS_API_ENDPOINT
-        value: "http://endpoint"
+        value: "http://trips"
       - name: USERPROFILE_API_ENDPOINT
-        value: "http://endpoint"
+        value: "http://userprofile"
 
 
