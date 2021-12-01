@@ -5,7 +5,7 @@ metadata:
   name: tripviewer
 spec:
   selector:
-    name: tripviewer
+    app: tripviewer
   #clusterIP: None
   ports:
   - name: tripviewer

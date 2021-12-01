@@ -5,7 +5,7 @@ metadata:
   name: userprofile
 spec:
   selector:
-    name: userprofile
+    app: userprofile
   #clusterIP: None
   ports:
   - name: userprofile

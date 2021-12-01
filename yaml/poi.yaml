@@ -5,7 +5,7 @@ metadata:
   name: poi
 spec:
   selector:
-    name: poi
+    app: poi
   #clusterIP: None
   ports:
   - name: poi
@@ -31,8 +31,8 @@ spec:
     spec:   
       containers:
       - name: poi
-      image: registryzwh7849.azurecr.io/poi:1.0
-      env:
+        image: registryzwh7849.azurecr.io/poi:1.0
+        env:
         - name: SQL_USER
           valueFrom:
             secretKeyRef:
@@ -41,11 +41,13 @@ spec:
         - name: SQL_PASSWORD
           valueFrom:
             secretKeyRef:
-            name: db-secret
-            key: password
+              name: db-secret
+              key: password
         - name: SQL_SERVER
           valueFrom:
             secretKeyRef:
               name: db-secret
               key: host
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Development"
      

@@ -5,7 +5,7 @@ metadata:
   name: userjava
 spec:
   selector:
-    name: userjava
+    app: userjava
   #clusterIP: None
   ports:
   - name: userjava
