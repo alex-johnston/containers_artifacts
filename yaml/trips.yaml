@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: trips-pod
+  name: trips-deployment
   labels:
-    app: tripviewer
+    app: tripinsights
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tripviewer
+      app: tripinsights
   template:
     metadata:
       labels:
-        app: tripviewer
+        app: tripinsights
     spec:
       containers:
       - name: trips
