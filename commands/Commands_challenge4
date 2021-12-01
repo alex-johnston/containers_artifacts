@@ -32,6 +32,20 @@ az aks update -n t4AKSCluster -g teamResources --attach-acr  registryzwh7849
 
 kubectl apply -f ./dbsecret.yaml
 
+az ad group create --display-name api-dev --mail-nickname api-dev
+az ad group create --display-name web-dev --mail-nickname web-dev
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
