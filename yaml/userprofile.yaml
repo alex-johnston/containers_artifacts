@@ -8,7 +8,7 @@ spec:
     app: userprofile
   #clusterIP: None
   ports:
-  - name: userprofile
+  - name: http
     port: 80
     targetPort: 80
     protocol: TCP
@@ -18,16 +18,16 @@ kind: Deployment
 metadata:
   name: userprofile-deployment
   labels:
-    app: tripinsights
+    app: userprofile
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tripinsights
+      app: userprofile
   template:
     metadata:
       labels:
-        app: tripinsights
+        app: userprofile
     spec:
       containers:
       - name: userprofile
