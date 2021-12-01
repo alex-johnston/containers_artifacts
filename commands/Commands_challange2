@@ -6,3 +6,97 @@ kubectl get nodes
 az acr list
 az aks update -n ajAKSCluster -g ajResourceGroup --attach-acr  registryzwh7849
 
+ 111  kubectl get pods
+  112  kubectl exec tripviewer-deployment-57c4c694cd-qgbpg -- curl http://localhost
+  113  kubectl exec tripviewer-deployment-57c4c694cd-qgbpg -- curl http://trips
+  114  kubectl exec tripviewer-deployment-57c4c694cd-qgbpg -- curl http://userprofile
+  115  kubectl exec tripviewer-deployment-57c4c694cd-qgbpg -- ping trips
+  116  kubectl get service
+  117  kubectl get pods
+  118  kubectl describe pod trips-deployment-5486c77548-6dpft
+  119  kubectl logs trips-deployment-5486c77548-6dpft
+  120  kubectl get service
+  121  kubectl get pods
+  122  kubectl exec trips-deployment-5486c77548-6dpft -- curl https://trips
+  123  kubectl exec trips-deployment-5486c77548-6dpft -- curl http://trips
+  124  kubectl exec trips-deployment-5486c77548-6dpft -- ping trips
+  125  kubectl describe service trips
+  126  pwd
+  127  kubectl delete -f yaml/trips.yaml 
+  128  kubectl apply -f yaml/trips.yaml 
+  129  kubectl get pods
+  130* kubectl expose deployment trips-deployment 
+  131  kubectl describe service trips
+  132  kubectl apply -f yaml/trips.yaml 
+  133  kubectl describe service trips
+  134  kubectl exec trips-deployment-5486c77548-6dpft -- curl http://trips
+  135  kubectl get pod
+  136  kubectl exec tripviewer-deployment-57c4c694cd-qgbpg  -- curl http://trips
+  137  kubectl exec trips-deployment-6dbb88c954-sxp4d  -- curl http://trips
+  138  kubectl apply -f yaml/trips.yaml 
+  139* kubectl exec tripviewer-deployment-57c4c694cd-qgbpg  -- curl http://tri
+  140  kubectl get pods
+  141  git add -A .
+  142  git commit -m "app not run"
+  143  git push
+  144  kubectl apply -f yaml/poi.yaml 
+  145  kubectl apply -f yaml/userjava.yaml
+  146  kubectl apply -f yaml/userprofile.yaml 
+  147  kubectl get pods
+  148  kubectl port forward tripviewer-deployment-57c4c694cd-qgbpg 8080:80
+  149  kubectl port-forward tripviewer-deployment-57c4c694cd-qgbpg 8080:80
+  150  kubectl apply -f yaml/userprofile.yaml 
+  151  kubectl apply -f yaml/userprofile.yaml 
+  152  kubectl delete -f yaml/userprofile.yaml 
+  153  kubectl apply -f yaml/userprofile.yaml 
+  154  kubectl apply -f yaml/userprofile.yaml 
+  155  git add -A .
+  156  git commit -m "app not run"
+  157  git push
+  158  kubectl apply -f yaml/userprofile.yaml 
+  159  kubectl get deployments
+  160  kubectl delete deployment userprofile-deployment
+  161  kubectl apply -f yaml/userprofile.yaml 
+  162  kubectl port-forward tripviewer-deployment-57c4c694cd-qgbpg 8080:80
+  163  kubectl get pods
+  164  kubectl port-forward poi-deployment-987867f8f-qs8sq  8080:80
+  165  kubectl delete -f yaml/poi.yaml 
+  166  kubectl apply -f yaml/poi.yaml 
+  167  kubectl get pods
+  168  kubectl port-forward poi-deployment-788fb99bbc-r4pm2  8080:80
+  169  kubectl get logs poi-deployment-788fb99bbc-r4pm2
+  170  kubectl  logs poi-deployment-788fb99bbc-r4pm2
+  171  kubectl port-forward poi-deployment-788fb99bbc-r4pm2  8080:80
+  172  kubectl get pods
+  173  kubectl delete -f yaml/userjava.yaml 
+  174  kubectl applu -f yaml/userjava.yaml 
+  175  kubectl apply -f yaml/userjava.yaml 
+  176  kubectl get pods
+  177  kubectl port-forward userjava-deployment-79fd4456dd-64d5m  8080:80
+  178  kubectl delete -f yaml/userjava.yaml 
+  179  kubectl apply -f yaml/userjava.yaml 
+  180  kubectl get pods
+  181  kubectl port-forward userjava-deployment-79fd4456dd-x5wnv  8080:80
+  182  kubectl get service
+  183  kubect get pods
+  184  kubectl get pods
+  185  kubectl delete -f yaml/userjava.yaml 
+  186  kubectl apply -f yaml/userjava.yaml 
+  187  kubect get pods
+  188  kubectl get pods
+  189  kubectl port-forward userjava-deployment-869cf4c55f-kj2n8  8080:80
+  190  kubectl get pods
+  191  kubectl logs  userjava-deployment-869cf4c55f-kj2n8
+  192  kubectl logs  userjava-deployment-869cf4c55f-kj2n8
+  193  kubectl logs  userjava-deployment-869cf4c55f-kj2n8
+  194  kubectl logs  userjava-deployment-869cf4c55f-kj2n8
+  195  kubectl logs  userjava-deployment-869cf4c55f-kj2n8
+  196  kubectl port-forward userjava-deployment-869cf4c55f-kj2n8  8080:80
+  197  git add -A .
+  198  git commit -m "cut and paste"
+  199  git push
+  200  git add -A .
+  201  git commit -m "cut and paste"
+  202  git push
+
+  
