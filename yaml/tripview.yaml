@@ -4,7 +4,7 @@ kind: Pod
 metadata:
   name: tripviewer-pod
   labels:
-    app: trips
+    app: tripsviewer
 spec:
   #replicas: 3
   containers:
