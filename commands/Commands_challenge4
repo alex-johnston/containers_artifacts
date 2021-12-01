@@ -1,0 +1,31 @@
+az ad group create --display-name t4AKSAdminGroup --mail-nickname t4AKSAdminGroup
+
+az identity create --name t4Identity --resource-group teamResources --location australiaeast
+
+az network vnet subnet list \
+    --resource-group teamResources \
+    --vnet-name vnet \
+    --query "[0].id" --output tsv
+
+# /subscriptions/3b94dff9-dad3-4a1a-a964-ae3e317c5e9e/resourceGroups/teamResources/providers/Microsoft.Network/virtualNetworks/vnet/subnets/vm-subnet
+
+az aks create \
+    --resource-group teamResources \
+    --location australiaeast \
+    --name t4AKSCluster \
+    --network-plugin azure \
+    --vnet-subnet-id /subscriptions/3b94dff9-dad3-4a1a-a964-ae3e317c5e9e/resourceGroups/teamResources/providers/Microsoft.Network/virtualNetworks/vnet/subnets/vm-subnet \
+    --docker-bridge-address 172.17.0.1/16 \
+    --dns-service-ip 10.2.2.10 \
+    --service-cidr 10.2.2.0/23 \
+    --generate-ssh-keys \
+    --enable-addons monitoring \
+    --enable-aad \
+    --aad-admin-group-object-ids a0b7e8b4-795d-44c2-b857-a3498c9ebca3 \
+    --enable-managed-identity \
+    --assign-identity /subscriptions/3b94dff9-dad3-4a1a-a964-ae3e317c5e9e/resourcegroups/teamResources/providers/Microsoft.ManagedIdentity/userAssignedIdentities/t4Identity
+
+az aks get-credentials --resource-group teamResources --name t4AKSCluster
+kubectl get nodes
+
+az aks update -n t4AKSCluster -g teamResources --attach-acr  registryzwh7849
