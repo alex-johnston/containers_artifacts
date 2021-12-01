@@ -35,10 +35,21 @@ spec:
         env:
         - name: SQL_USER
           value: "sqlserverzwh7849"
+        - name: SQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: username
         - name: SQL_PASSWORD
-          value: "cY0vi8Ws6"
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: password
         - name: SQL_SERVER
-          value: "sqlserverzwh7849.database.windows.net"
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: host
         resources:
           requests:
             cpu: 100m
