@@ -8,7 +8,7 @@ spec:
     app: poi
   #clusterIP: None
   ports:
-  - name: poi
+  - name: http
     port: 80
     targetPort: 80
     protocol: TCP
@@ -18,16 +18,16 @@ kind: Deployment
 metadata:
   name: poi-deployment
   labels:
-    app: tripinsights
+    app: poi
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tripinsights
+      app: poi
   template:
     metadata:
       labels:
-        app: tripinsights
+        app: poi
     spec:   
       containers:
       - name: poi
