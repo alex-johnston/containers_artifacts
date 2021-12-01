@@ -28,24 +28,24 @@ spec:
     metadata:
       labels:
         app: tripinsights
-     spec:   
-       containers:
-       - name: poi
-       image: registryzwh7849.azurecr.io/poi:1.0
-       env:
-         - name: SQL_USER
-           valueFrom:
-             secretKeyRef:
-               name: db-secret
-               key: username
-         - name: SQL_PASSWORD
-           valueFrom:
-             secretKeyRef:
-             name: db-secret
-             key: password
-         - name: SQL_SERVER
-           valueFrom:
-             secretKeyRef:
-               name: db-secret
-               key: host
+    spec:   
+      containers:
+      - name: poi
+      image: registryzwh7849.azurecr.io/poi:1.0
+      env:
+        - name: SQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: username
+        - name: SQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+            name: db-secret
+            key: password
+        - name: SQL_SERVER
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: host
      
