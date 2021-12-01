@@ -1,0 +1,29 @@
+AKS_ID=$(az aks show \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --query id -o tsv)
+
+    APPDEV_ID=$(az ad group create --display-name appdev --mail-nickname appdev --query objectId -o tsv)
+
+    az role assignment create \
+  --assignee $APPDEV_ID \
+  --role "Azure Kubernetes Service Cluster User Role" \
+  --scope $AKS_ID
+
+  OPSSRE_ID=$(az ad group create --display-name opssre --mail-nickname opssre --query objectId -o tsv)
+
+  az role assignment create \
+  --assignee $OPSSRE_ID \
+  --role "Azure Kubernetes Service Cluster User Role" \
+  --scope $AKS_ID
+
+  echo "Please enter the UPN for application developers: " && read AAD_DEV_UPN
+  echo "Please enter the secure password for application developers: " && read AAD_DEV_PW
+  
+  
+  AKSDEV_ID=$(az ad user create \
+  --display-name "AKS Dev" \
+  --user-principal-name $AAD_DEV_UPN \
+  --password $AAD_DEV_PW \
+  --query objectId -o tsv)
+
