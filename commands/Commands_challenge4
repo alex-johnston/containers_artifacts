@@ -42,15 +42,3 @@ kubectl apply -f yaml/rbac.yaml
 
 az ad group show --group api-dev --query objectId -o tsv
 az ad group show --group web-dev --query objectId -o tsv
-
-
-
-
-
-
-
-
-#az keyvault create --location australiaeast --name "t4-msopenhack-keyvault" --resource-group "teamResources"
-#az keyvault secret set --vault-name "t4-msopenhack-keyvault" --name "ExamplePassword" --value "hVFkk965BuUv"
-#az keyvault secret set --vault-name "t4-msopenhack-keyvault" --name "ExamplePassword" --value "hVFkk965BuUv"
-#az keyvault secret set --vault-name "t4-msopenhack-keyvault" --name "ExamplePassword" --value "hVFkk965BuUv"

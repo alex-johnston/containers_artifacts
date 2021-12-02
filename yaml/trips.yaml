@@ -5,13 +5,13 @@ metadata:
   name: trips
   namespace: api
   #labels:
-   # run: trips
+  # run: trips
 spec:
   #clusterIP: None
   ports:
-  - name: http
-    port: 80   
-    protocol: TCP
+    - name: http
+      port: 80
+      protocol: TCP
   selector:
     app: trips
 ---
@@ -33,43 +33,54 @@ spec:
         app: trips
     spec:
       containers:
-      - name: trips
-        image: registryzwh7849.azurecr.io/trips:1.0
-        env:
-        - name: PORT
-          value: "80"
-        - name: CONFIG_FILES_PATH
-          value: "/secrets"
-        - name: SQL_USER
-          valueFrom:
-            secretKeyRef:
-              name: db-secret
-              key: username
-        - name: SQL_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: db-secret
-              key: password
-        - name: SQL_SERVER
-          valueFrom:
-            secretKeyRef:
-              name: db-secret
-              key: host
-        - name: SQL_DBNAME
-          value: "mydrivingDB"
-        - name: OPENAPI_DOCS_URI
-          value: "http://trips"
-        - name: ASPNETCORE_ENVIRONMENT
-          value: "Development"
-        - name: DEBUG_LOGGING
-          value: "false"
-        resources:
-          requests:
-            cpu: 100m
-            memory: 128Mi
-          limits:
-            cpu: 250m
-            memory: 256Mi
-        ports:
-        - containerPort: 80
-          name: trips
+        - name: trips
+          image: registryzwh7849.azurecr.io/trips:1.0
+          env:
+            - name: PORT
+              value: "80"
+            - name: CONFIG_FILES_PATH
+              value: "/secrets"
+            - name: SQL_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret-hostname
+                  key: secret
+            - name: SQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret-username
+                  key: secret
+            - name: SQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret-password
+                  key: secret
+            - name: SQL_DBNAME
+              value: "mydrivingDB"
+            - name: OPENAPI_DOCS_URI
+              value: "http://trips"
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Development"
+            - name: DEBUG_LOGGING
+              value: "false"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
+          ports:
+            - containerPort: 80
+              name: trips
+          volumeMounts:
+            - name: secrets-store01-inline
+              mountPath: "/mnt/secrets-store"
+              readOnly: true
+      volumes:
+        - name: secrets-store01-inline
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: "azure-kvname-podid"

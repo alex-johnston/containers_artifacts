@@ -1,0 +1,17 @@
+az aks enable-addons --addons azure-keyvault-secrets-provider --name t4AKSCluster --resource-group teamResources
+kubectl get pods -n kube-system -l 'app in (secrets-store-csi-driver, secrets-store-provider-azure)'
+
+az keyvault create --location australiaeast --name "t4-msopenhack-keyvault" --resource-group "teamResources"
+az keyvault secret set --vault-name "t4-msopenhack-keyvault" --name "db-secret-hostname" --value "sqlserverzwh7849.database.windows.net"
+az keyvault secret set --vault-name "t4-msopenhack-keyvault" --name "db-secret-username" --value "sqladminzWh7849"
+az keyvault secret set --vault-name "t4-msopenhack-keyvault" --name "db-secret-password" --value "cY0vi8Ws6"
+
+az aks show -g teamResources -n t4AKSCluster --query "addonProfiles.azureKeyvaultSecretsProvider.identity.clientId" -o tsv
+
+# set policy to access keys in your key vault
+az keyvault set-policy -n "t4-msopenhack-keyvault" --key-permissions get --spn "7dc75c0a-b377-4f54-8bf7-2b24bb8c21a5"
+# set policy to access secrets in your key vault
+az keyvault set-policy -n "t4-msopenhack-keyvault" --secret-permissions get --spn "7dc75c0a-b377-4f54-8bf7-2b24bb8c21a5"
+# set policy to access certs in your key vault
+az keyvault set-policy -n "t4-msopenhack-keyvault" --certificate-permissions get --spn "7dc75c0a-b377-4f54-8bf7-2b24bb8c21a5"
+
