@@ -12,3 +12,10 @@ metadata:
   name: web
   labels:
     name: web
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ingress-basic
+  labels:
+    name: ingress-basic
